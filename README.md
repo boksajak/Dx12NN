@@ -5,11 +5,15 @@ This is a Dx12 application which runs a neural network on the GPU using HLSL sha
 ![Application Output](main.png "Application Output") Application shows a reference image (training image that it's trying to learn) on the left, and prediction on the right.
 
 ## Build Instructions
+For the first build, **run the Visual Studio as an Administrator**. Build process will create symbolic links to folder with shaders, which can fail on some systems if VS is run without administrator rights.
 
 * Run `cmake` on the *src* subfolder and build the generated project
 * Or run provided file `create_vs_project.bat` and build the project generated in the *vsbuild* subfolder (requires Visual Studio 2022)
 
 *Note:* First start takes about a minute, because shaders need to be compiled. Subsequent runs are faster.
+
+### Troubleshooting
+If you get an error *Error: failed to get shader blob result!*, it most likely means that build didn't create a symbolic link for shaders folder in the build directory and executable can't find shader files. To fix this, run Visual Studio as administrator, clean the solution and run the build again.
 
 ## 3rd Party Software
 
